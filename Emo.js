@@ -16,8 +16,10 @@
     // ];
     // const targetemo = ['😃'];
 
-    const emojipool = ['alien.png','hanal.png','hanar.png','junka.png','junkm.png','oldl.png','punk.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png',];
-    const targetemo = ['target.png']
+    const emojipool = ['target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus5.png','alien.png','hanal.png','hanar.png','junka.png','junkm.png','oldl.png','punk.png',];
+    const targetemo = ['target.png'];
+    const plustwo = ['plus2.png'];
+    const plusfive = ['plus5.png'];
 
 
     // const targetemoclick = new Audio('sounds/targetemo.mp3');
@@ -42,6 +44,7 @@
     let selectedemoji = emojipool[ran];
     let isdecoy = false;
     const istargetdecoy = targetemo.includes(selectedemoji);
+    let  givestwopoints = false;
 
     const emojidiv = document.createElement('div');
     emojidiv.className = "drop-shadow-lg hover:drop-shadow-2xl text-7xl absolute emoji animate-bounce hover:brightness-130 hover:scale-110 duration-400 transition-all ";
@@ -63,6 +66,20 @@
     emojidiv.dataset.decoy = true;
     };
 
+    if(selectedemoji === plustwo[0] && Math.random() < 0.3){
+    givestwopoints = true;
+    };
+
+    if(givestwopoints) {
+    emojidiv.classList.add(
+    'decoy',
+    'cursor-not-allowed',
+    'opacity-90',
+    directions[Math.floor(Math.random() * directions.length)]
+  );
+  emojidiv.addEventListener("mouseenter", () => {yo.play()})
+ }
+
 
     const directions = [
   'hover:translate-x-[100%]',    
@@ -77,7 +94,7 @@
   emojidiv.classList.add(
     'decoy',
     'cursor-not-allowed',
-    'opacity-80',
+    'opacity-90',
     directions[Math.floor(Math.random() * directions.length)]
   );
   emojidiv.addEventListener("mouseenter", () => {yo.play()})
@@ -183,10 +200,14 @@
         return;
     }
 
+    let scored = false;
+
     if (selectedemoji === targetemo[0] && !emojidiv.dataset.decoy ) {
             new Audio('sounds/targetemo.mp3').play();
             score++;
             document.getElementById("count").textContent = score;
+
+            scored = true;
 
             if (score > highscore) {
         highscore = score;
@@ -194,12 +215,36 @@
         document.getElementById("highscore").textContent = `Highest Score : ${highscore}`;
         }
 
-            emojidiv.remove();
-        } else {
+            
+        }
+        else if (selectedemoji === plustwo[0]){
+            score +=2;
+            document.getElementById("count").textContent = score;
+            new Audio('sounds/plus2.mp3').play();  
+            scored = true;
+
+        }
+        else if (selectedemoji === plusfive[0]){
+            score +=5;
+            document.getElementById("count").textContent = score; 
+            new Audio('sounds/plus5.mp3').play(); 
+            scored = true;
+
+        }
+        else {
             wrongemo.play();
             endgame();
             document.getElementById("timer").textContent = 0;
             // alert("Wrong emoji selected!");
+        }
+        emojidiv.remove();
+
+        if(scored && score > highscore) {
+
+         highscore = score;
+        localStorage.setItem("highscore", highscore);
+        document.getElementById("highscore").textContent = `Highest Score : ${highscore}`;
+
         }
     });
 }
