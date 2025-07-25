@@ -325,5 +325,5 @@ function exit() {
     button.play();
     setTimeout(() => {
         location.reload();
-    }, 150); // wait 300ms to let the sound play
+    }, 150);
 }
