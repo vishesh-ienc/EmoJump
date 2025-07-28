@@ -14,17 +14,63 @@
 
     
 
-    <div id="game-screen" class="relative bg-black  w-full h-screen overflow-hidden">
+    <div id="game-screen" class="relative w-full h-screen overflow-hidden">
 
-    <div id="header">
-        <header class="w-full  bg-opacity-60 text-white flex justify-between items-center px-6 py-4 fixed top-0 z-40 ">
+    <div id="header" style="font-family: jersey;">
+        <header class="w-full text-white  flex justify-between items-center px-6 py-4 fixed top-0 z-40 ">
     <h1 class="text-3xl font-bold tracking-wide hidden md:block">EmoJump</h1>
-    <nav class="space-x-6 text-lg">
+    <nav class="flex items-center space-x-6 text-lg font-bold">
       <a href="aboutdev.html" target="_blank" class="hover:text-amber-300 ml-28">About Dev</a>
-      <!-- <a href="#" class="hover:text-amber-300">About</a> -->
+
+      
+   <div class="relative">
+      <button onclick="toggleInstructions()"  class="cursor-pointer  hover:text-amber-300 ">How to play</button>
+      <div id="instructions" style="background:rgba(123, 111, 111, 0.337) !important;"   class=" text-white font-bold p-4 grid grid-cols-1 gap-6  rounded-3xl absolute w-50  h-auto mt-4 hidden ">
+
+
+    <div class="flex items-center gap-2 text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/target.png" class=" rounded-full w-15 h-20" >
+      <span class=""> +1 </span> 
+      
+      </div>
+
+      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all "><img src="emojis/plus2.png" class="w-15 h-20" >
+      <span class="">+2</span> 
+      
+      </div>
+
+      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/plus5.png" class="rounded-full w-15 h-20" >
+      <span class="">+5</span> 
+      
+      
+      </div>
+      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all  "><img src="emojis/timeslow.png" class="rounded-3xl  w-15 h-20 " >
+      <span class="">+5 secs</span> 
+      
+      
+      </div>
+    
+    </div>
+    </div>
+     
+      
       <a href="suggest.html" target="_blank" class="hover:text-amber-300">💬 Suggest a Feature or Fix!</a>
     </nav>
   </header>
+   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- INTRO TEXT SECTION -->
   <section id="intro-text" class="absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-white z-30">

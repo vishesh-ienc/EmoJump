@@ -16,11 +16,28 @@
     // ];
     // const targetemo = ['😃'];
 
-    const emojipool = ['target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus5.png','alien.png','hanal.png','hanar.png','junka.png','junkm.png','oldl.png','punk.png',];
+    const emojipool = ['target.png','target.png','target.png','target.png','target.png',
+  'target.png','target.png','target.png','target.png','target.png',
+  'target.png','target.png','target.png','target.png','target.png',
+  'target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png','target.png',
+
+ 
+  'plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png','plus2.png',
+
+  
+  'plus5.png','plus5.png',
+
+  'timeslow.png',
+
+  
+  'purple.png','purple.png','purple.png','alien.png','hanal.png','hanar.png',
+  'junka.png','junkm.png','oldl.png','punk.png','purple.png','alien.png','hanal.png','hanar.png',
+  'junka.png','junkm.png','oldl.png','punk.png'];
+
     const targetemo = ['target.png'];
     const plustwo = ['plus2.png'];
     const plusfive = ['plus5.png'];
-
+    const timeslow = ['timeslow.png']
 
     // const targetemoclick = new Audio('sounds/targetemo.mp3');
     const wrongemo = new Audio('sounds/wronge.mp3');
@@ -28,6 +45,20 @@
     const yo = new Audio('sounds/yo.wav');
     const bg = new Audio('sounds/bg.mp3');
     const button = new Audio('sounds/buttonclick.wav');
+
+
+    function toggleInstructions() {
+  const dropdown = document.getElementById('instructions');
+  
+  if (dropdown.classList.contains('hidden')) {
+    dropdown.classList.remove('hidden');
+  } else {
+    dropdown.classList.add('hidden');
+  }
+};
+
+
+
 
     let score = 0;
     let highscore = localStorage.getItem("highscore") || 0;
@@ -57,8 +88,15 @@
 
     emojidiv.appendChild(img);
 
+     const directions = [
+  'hover:translate-x-[100%]',    
+  'hover:-translate-x-[100%]',   
+  'hover:translate-y-[100%]',    
+  'hover:-translate-y-[100%]',   
+  'hover:translate-x-[100%] hover:-translate-y-[100%]',
+  'hover:-translate-x-[100%] hover:-translate-y-[100%]',
+]; 
 
-    
 
     if(istargetdecoy && Math.random() < 0.3){
     console.log("Decoy created:", selectedemoji);
@@ -77,24 +115,17 @@
     'opacity-90',
     directions[Math.floor(Math.random() * directions.length)]
   );
+  emojidiv.dataset.decoy = true;
   emojidiv.addEventListener("mouseenter", () => {yo.play()})
  }
 
 
-    const directions = [
-  'hover:translate-x-[100%]',    
-  'hover:-translate-x-[100%]',   
-  'hover:translate-y-[100%]',    
-  'hover:-translate-y-[100%]',   
-  'hover:translate-x-[100%] hover:-translate-y-[100%]',
-  'hover:-translate-x-[100%] hover:-translate-y-[100%]',
-]; 
-
+   
    if (isdecoy) {
   emojidiv.classList.add(
     'decoy',
     'cursor-not-allowed',
-    'opacity-90',
+    'opacity-70',
     directions[Math.floor(Math.random() * directions.length)]
   );
   emojidiv.addEventListener("mouseenter", () => {yo.play()})
@@ -207,15 +238,7 @@
             score++;
             document.getElementById("count").textContent = score;
 
-            scored = true;
-
-            if (score > highscore) {
-        highscore = score;
-        localStorage.setItem("highscore", highscore);
-        document.getElementById("highscore").textContent = `Highest Score : ${highscore}`;
-        }
-
-            
+            scored = true;    
         }
         else if (selectedemoji === plustwo[0]){
             score +=2;
@@ -229,6 +252,14 @@
             document.getElementById("count").textContent = score; 
             new Audio('sounds/plus5.mp3').play(); 
             scored = true;
+
+        }
+        else if(selectedemoji === timeslow[0]){
+
+            timeleft += 5;
+            document.getElementById("timer").textContent = timeleft;
+            new Audio('sounds/time.mp3').play();
+            
 
         }
         else {
@@ -264,9 +295,9 @@ document.getElementById("header").classList.add("hidden");
 document.getElementById("game-screen").classList.remove("bg-black");
 
 bg.loop = true;
-bg.volume = 0.3; // Optional: set volume
+bg.volume = 0.8; // Optional: set volume
 bg.play();
-gameend = setInterval(spawnemoji,400);
+gameend = setInterval(spawnemoji,350);
 document.getElementById("startbutton").classList.add("hidden");
 document.getElementById("startbutton").classList.add("pointer-events-none");
 document.getElementById("count").classList.remove("hidden");
