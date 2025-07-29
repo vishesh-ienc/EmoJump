@@ -47,14 +47,22 @@
     const button = new Audio('sounds/buttonclick.wav');
 
 
-    function toggleInstructions() {
+  function toggleInstructions() {
   const dropdown = document.getElementById('instructions');
-  
+  button.play()
   if (dropdown.classList.contains('hidden')) {
     dropdown.classList.remove('hidden');
   } else {
     dropdown.classList.add('hidden');
   }
+
+  document.addEventListener('click', (e) => {
+  if (!dropdown.contains(e.target) && e.target !== howtoplay) {
+    dropdown.classList.add('hidden');
+    button.play()
+  }
+}
+  )
 };
 
 
@@ -83,7 +91,7 @@
     const img = document.createElement('img');
     img.src = `emojis/${selectedemoji}`;
     img.alt = selectedemoji;
-    img.className = "w-27 h-27 object-contain pointer-events-none rounded-full"; // 64px if tailwind config = default
+    img.className = "lg:w-27 lg:h-27 w-21 h-21 object-contain pointer-events-none rounded-full"; // 64px if tailwind config = default
     img.style.imageRendering = "pixelated";
 
     emojidiv.appendChild(img);
@@ -402,4 +410,10 @@ function exit() {
     setTimeout(() => {
         location.reload();
     }, 150);
+}
+
+
+function buttonsound(){
+
+    button.play();
 }

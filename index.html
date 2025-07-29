@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmoJump</title>
-    <link rel="stylesheet" href="src/output.css">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
@@ -17,33 +17,34 @@
     <div id="game-screen" class="relative w-full h-screen overflow-hidden">
 
     <div id="header" style="font-family: jersey;">
-        <header class="w-full text-white  flex justify-between items-center px-6 py-4 fixed top-0 z-40 ">
+        <header class="w-full text-white   flex lg:justify-between justify-center items-center px-6 py-4 fixed top-0 z-40 ">
     <h1 class="text-3xl font-bold tracking-wide hidden md:block">EmoJump</h1>
-    <nav class="flex items-center space-x-6 text-lg font-bold">
-      <a href="aboutdev.html" target="_blank" class="hover:text-amber-300 ml-28">About Dev</a>
+    <nav class="flex items-center space-x-6 text-lg lg:font-bold">
+      <a href="aboutdev.html" target="_blank" class="hover:text-amber-300 " onclick="buttonsound()">About Dev</a>
 
       
    <div class="relative">
-      <button onclick="toggleInstructions()"  class="cursor-pointer  hover:text-amber-300 ">How to play</button>
-      <div id="instructions" style="background:rgba(123, 111, 111, 0.337) !important;"   class=" text-white font-bold p-4 grid grid-cols-1 gap-6  rounded-3xl absolute w-50  h-auto mt-4 hidden ">
+      <button id="howtoplay"   onclick="toggleInstructions()"  class="cursor-pointer  hover:text-amber-300 ml-1">How to play</button>
+
+      <div id="instructions"  class=" text-white font-bold p-4 grid grid-cols-1 gap-6 rounded-3xl absolute hidden lg:w-70 w-40  h-auto mt-4 bg-gray-800">
 
 
-    <div class="flex items-center gap-2 text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/target.png" class=" rounded-full w-15 h-20" >
+    <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/target.png" class=" rounded-full lg:w-25 lg:h-25 w-15 h-15" >
       <span class=""> +1 </span> 
       
       </div>
 
-      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all "><img src="emojis/plus2.png" class="w-15 h-20" >
+      <div class="flex items-center gap-2  lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all "><img src="emojis/plus2.png" class="lg:w-25 lg:h-25 w-15 h-15" >
       <span class="">+2</span> 
       
       </div>
 
-      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/plus5.png" class="rounded-full w-15 h-20" >
+      <div class="flex items-center gap-2  lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/plus5.png" class="rounded-full lg:w-22 lg:h-22 ml-2 w-13 h-13" >
       <span class="">+5</span> 
       
       
       </div>
-      <div class="flex items-center gap-2  text-xl hover:scale-110 hover:brightness-105 duration-400 transition-all  "><img src="emojis/timeslow.png" class="rounded-3xl  w-15 h-20 " >
+      <div class="flex items-center gap-2  lg:text-2xl  hover:scale-110 hover:brightness-105 duration-400 transition-all  "><img src="emojis/timeslow.png" class="rounded-3xl lg:w-25 lg:h-25 ml-1.5 w-15 h-15 " >
       <span class="">+5 secs</span> 
       
       
@@ -53,7 +54,7 @@
     </div>
      
       
-      <a href="suggest.html" target="_blank" class="hover:text-amber-300">💬 Suggest a Feature or Fix!</a>
+      <a href="suggest.html" target="_blank" onclick="buttonsound()" class="hover:text-amber-300">💬 Suggest a Feature or Fix!</a>
     </nav>
   </header>
    
@@ -73,9 +74,9 @@
 
 
   <!-- INTRO TEXT SECTION -->
-  <section id="intro-text" class="absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-white z-30">
-    <h2 class="text-6xl  font-bold mb-12 drop-shadow-lg"style="font-family: 'jersey25';">Welcome to EmoJump</h2>
-    <p class="text-xl max-w-xl mx-auto text-amber-300 drop-shadow font-bold opacity-90"style="font-family: 'jersey25';" >
+  <section id="intro-text" class="relative mt-28 sm:mt-40 lg:mt-23 lg:text-center  text-white z-30">
+    <h2 class="lg:text-6xl p-4 text-[45px] font-bold  text-center drop-shadow-lg "style="font-family: 'jersey25';">Welcome to EmoJump</h2>
+    <p class="lg:text-xl text-[19px] lg:max-w-xl  mx-auto text-amber-300 drop-shadow font-bold text-center opacity-90 p-6"style="font-family: 'jersey25';" >
       A retro, 8-bit-inspired arcade game. Catch the target emoji to score points — but beware of the decoys trying to trick you!
     </p>
   </section>
@@ -101,12 +102,13 @@
           
           
          <div id="timer" class=" w-40 h-20 absolute top-2 right-2 rounded-3xl bg-amber-300 hidden flex items-center justify-center text-5xl font-bold z-20">60</div>
-        <div id="startbutton" class="w-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center justify-center bg-emerald-500 p-8 rounded-4xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl z-30 cursor-pointer gap-2" onclick="startgame()">
+        <div id="startbutton" class="lg:w-50 w-35 h-24 absolute lg:top-1/2 top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center justify-center bg-emerald-500 p-8 rounded-4xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl z-30 cursor-pointer gap-2" onclick="startgame()">
 
+
+          <img src="emojis/target.png" alt="target emoji" class="lg:w-12 lg:h-12 w-10 h-10  object-contain" style="image-rendering: pixelated;">
           
-          <img src="emojis/target.png" alt="target emoji" class="w-12 h-12 object-contain" style="image-rendering: pixelated;">
      </div>
-     <div class="text-amber-300 text-xl top-[62%] left-1/2  -translate-x-1/2 -translate-y-1/2  absolute animate-pulse font-bold mt-4 z-20" id="highscore" style="font-family: 'jersey25';">Highest Score : 0 </div>
+     <div class="lg:text-amber-300 text-amber-50 text-xl lg:mt-12 top-[58%] left-1/2  -translate-x-1/2 -translate-y-1/2  absolute animate-pulse font-bold mt-4 z-20" id="highscore" style="font-family: 'jersey25';">Highest Score : 0 </div>
     <div id="count" class="w-20 h-20 text-7xl  text-amber-300 font-bold rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center hidden z-20  ">
     0
     </div>
@@ -114,11 +116,11 @@
    
     <div class=" grid grid-cols-1 hidden opacity-0 scale-90 transition-all duration-2000 ease-in-out  z-30 " id="endgrid">
     
-    <div class="text-red-500 font-bold text-7xl flex items-center justify-center pt-50" style="font-family: 'jersey25';">Your score</div>
+    <div class="text-red-500 font-bold lg:text-7xl text-6xl flex items-center justify-center pt-50" style="font-family: 'jersey25';">Your score</div>
    
     <div class="flex items-center justify-center pt-50 gap-x-8">
-     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl w-40 h-15 flex justify-center items-center cursor-pointer" onclick="exit()" id="ex"   >Exit</div>
-     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl w-40 h-15 flex justify-center items-center cursor-pointer" onclick="tryagain()" id="try">Try again</div>
+     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-2xl lg:w-40  w-30   h-15 flex justify-center items-center cursor-pointer" onclick="exit()" id="ex"   >Exit</div>
+     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-xl lg:w-40 w-30 h-15 flex justify-center items-center cursor-pointer " onclick="tryagain()" id="try">Try again</div>
     </div>
 
     </div>
