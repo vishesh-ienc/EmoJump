@@ -59,7 +59,7 @@
   document.addEventListener('click', (e) => {
   if (!dropdown.contains(e.target) && e.target !== howtoplay) {
     dropdown.classList.add('hidden');
-    button.play()
+
   }
 }
   )
