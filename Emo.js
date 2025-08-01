@@ -143,6 +143,7 @@
     const bounds = gamescreen.getBoundingClientRect();
     const timer = document.getElementById("timer").getBoundingClientRect();
     const counter = document.getElementById("count").getBoundingClientRect();
+    const exitinplay = document.getElementById("exitbutton").getBoundingClientRect();
 
     const maxTop = bounds.height - 80;
     const maxLeft = bounds.width - 80;
@@ -178,6 +179,13 @@
             left: counter.left - bounds.left,
             right: counter.right - bounds.left
         };
+        const exitinplaybox = {
+            top: exitinplay.top - bounds.top,
+            bottom: exitinplay.bottom - bounds.top,
+            left: exitinplay.left - bounds.left,
+            right: exitinplay.right - bounds.left
+        };
+        
 
         
         if (
@@ -185,6 +193,15 @@
               emojiBox.left > timerBox.right ||
               emojiBox.bottom < timerBox.top ||
               emojiBox.top > timerBox.bottom)
+        ) {
+            isOverlapping = true;
+        }
+
+         if (
+            !(emojiBox.right < exitinplaybox.left ||
+              emojiBox.left > exitinplaybox.right ||
+              emojiBox.bottom < exitinplaybox.top ||
+              emojiBox.top > exitinplaybox.bottom)
         ) {
             isOverlapping = true;
         }
@@ -299,6 +316,8 @@ document.getElementById("header").classList.add("hidden");
 // videobg.addEventListener("click", () => {videobg.play()});
 
 
+exitduringplay =  document.getElementById("exitbutton")
+exitduringplay.classList.remove("hidden")
 
 document.getElementById("game-screen").classList.remove("bg-black");
 
@@ -334,6 +353,15 @@ function updatetimer(){
 
     }
 }
+
+function exitbutton() {
+
+    exitbutton = document.getElementById("exitbutton")
+    exitbutton.classList.add("hidden")
+    endgame();
+    wrongemo.play()
+}
+
 
 function endgame (){
 
@@ -401,14 +429,10 @@ function tryagain () {
 
     
 };
-
-
-
-
 function exit() {
     button.play();
     setTimeout(() => {
-        location.reload();
+     location.reload();
     }, 150);
 }
 
@@ -417,3 +441,4 @@ function buttonsound(){
 
     button.play();
 }
+

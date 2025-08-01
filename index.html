@@ -54,25 +54,10 @@
     </div>
      
       
-      <a href="suggest.html" target="_blank" onclick="buttonsound()" class="hover:text-amber-300">💬 Suggest a Feature or Fix!</a>
+      <a href="suggest.html" target="_blank" onclick="buttonsound()" class="hover:text-amber-300">Suggest a Feature / Fix!</a>
     </nav>
   </header>
    
-  
-
-
-
-
-
-
-
-
-<!-- whitespace nowrap and text 32 on welcome -->
-
-
-
-
-
   <!-- INTRO TEXT SECTION -->
   <section id="intro-text" class="relative mt-28 sm:mt-40 lg:mt-23 lg:text-center  text-white z-30">
     <h2 class="lg:text-6xl  text-[45px] font-bold  text-center drop-shadow-lg "style="font-family: 'jersey25';">Welcome to EmoJump</h2>
@@ -101,7 +86,7 @@
 
           
           
-         <div id="timer" class=" w-40 h-20 absolute top-2 right-2 rounded-3xl bg-amber-300 hidden flex items-center justify-center text-5xl font-bold z-20">60</div>
+         <div id="timer" class=" lg:w-40 lg:h-20 w-32 h-18 absolute top-[1%] right-[1%] rounded-3xl bg-amber-300 hidden flex items-center justify-center lg:text-5xl text-4xl font-bold z-20">60</div>
         <div id="startbutton" class="lg:w-50  lg:h-27  w-35 h-24 absolute lg:top-1/2 top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center justify-center bg-emerald-500 p-8 rounded-4xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl z-30 cursor-pointer gap-2" onclick="startgame()">
 
 
@@ -124,7 +109,10 @@
     </div>
 
     </div>
+    <button class="cursor-pointer" onclick="exitbutton()">
+    <div id="exitbutton" class="bg-red-500 hover:scale-110 hover:brightness-105 duration-300 text-white h-18 w-30 lg:w-35 lg:h-20 absolute rounded-3xl z-20 left-[1%] top-[1%] text-2xl flex items-center justify-center font-bold hidden">Exit</div></button>
     </div>
+
     
  <script src="Emo.js" defer></script>   
 </body>
