@@ -368,6 +368,11 @@ function endgame (){
 //  {setTimeout(() => {     
 //   videobg.pause();
 // }, 1600);};
+    document.getElementById("exitbutton").classList.add("hidden")
+
+
+
+
     document.getElementById("bg").classList.add("hidden");
     document.getElementById("scorebg").classList.remove("hidden");
     bg.pause();
