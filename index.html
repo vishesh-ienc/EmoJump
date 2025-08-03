@@ -1,119 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0 , initial-scale=1.0">
     <title>EmoJump</title>
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
-</style>
-</head>
-<body id="body" class="min-h-screen text-base">
-
     
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+    </style>
+</head>
 
+<body id="body" class="min-h-screen text-base">
+    <!-- Main Game Container --> 
     <div id="game-screen" class="relative w-full h-screen overflow-hidden">
 
-    <div id="header" style="font-family: jersey;">
-        <header class="w-full text-white   flex lg:justify-between justify-center items-center px-6 py-4 fixed top-0 z-40 ">
-    <h1 class="text-3xl font-bold tracking-wide hidden md:block">EmoJump</h1>
-    <nav class="flex items-center lg:space-x-6 text-sm space-x-5 pt-4 font-bold whitespace-nowrap lg:text-lg ">
-      <a href="aboutdev.html" target="_blank" class="hover:text-amber-300 " onclick="buttonsound()">About Dev</a>
+        <!-- ==================== HEADER SECTION ==================== -->
+        <div id="header" style="font-family: jersey;">
+            <header class="w-full text-white flex lg:justify-between justify-center items-center px-6 py-4 fixed top-0 z-40">
+                <!-- Game Logo -->
+                <h1 class="text-3xl font-bold tracking-wide hidden md:block">EmoJump</h1>
+                
+                <!-- Navigation Menu -->
+                <nav class="flex items-center lg:space-x-6 text-sm space-x-5 pt-4 font-bold whitespace-nowrap lg:text-lg">
+                    <!-- About Developer Link -->
+                    <a href="aboutdev.html" target="_blank" class="hover:text-amber-300" onclick="buttonsound()">About Dev</a>
 
-      
-   <div class="relative">
-      <button id="howtoplay"   onclick="toggleInstructions()"  class="cursor-pointer  hover:text-amber-300 ml-1">How to play</button>
+                    <!-- How to Play Section -->
+                    <div class="relative">
+                        <button id="howtoplay" onclick="toggleInstructions()" class="cursor-pointer hover:text-amber-300 ml-1">How to play</button>
 
-      <div id="instructions"  class=" text-white font-bold p-4 grid grid-cols-1 gap-6 rounded-3xl absolute hidden lg:w-70 w-40  h-auto mt-4 bg-gray-800">
+                        <!-- Instructions Dropdown -->
+                        <div id="instructions" class="text-white font-bold p-4 grid grid-cols-1 gap-6 rounded-3xl absolute hidden lg:w-70 w-40 h-auto mt-4 bg-gray-800">
+                            <!-- Target Emoji (+1 Point) -->
+                            <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all">
+                                <img src="emojis/target.png" class="rounded-full lg:w-25 lg:h-25 w-15 h-15">
+                                <span class="">+1</span>
+                            </div>
 
+                            <!-- Plus 2 Emoji (+2 Points) -->
+                            <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all">
+                                <img src="emojis/plus2.png" class="lg:w-25 lg:h-25 w-15 h-15">
+                                <span class="">+2</span>
+                            </div>
 
-    <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/target.png" class=" rounded-full lg:w-25 lg:h-25 w-15 h-15" >
-      <span class=""> +1 </span> 
-      
-      </div>
+                            <!-- Plus 5 Emoji (+5 Points) -->
+                            <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all">
+                                <img src="emojis/plus5.png" class="rounded-full lg:w-22 lg:h-22 ml-2 w-13 h-13">
+                                <span class="">+5</span>
+                            </div>
 
-      <div class="flex items-center gap-2  lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all "><img src="emojis/plus2.png" class="lg:w-25 lg:h-25 w-15 h-15" >
-      <span class="">+2</span> 
-      
-      </div>
+                            <!-- Time Slow Emoji (+5 Seconds) -->
+                            <div class="flex items-center gap-2 lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all">
+                                <img src="emojis/timeslow.png" class="rounded-3xl lg:w-25 lg:h-25 ml-1.5 w-15 h-15">
+                                <span class="">+5 secs</span>
+                            </div>
+                        </div>
+                    </div>
 
-      <div class="flex items-center gap-2  lg:text-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all"><img src="emojis/plus5.png" class="rounded-full lg:w-22 lg:h-22 ml-2 w-13 h-13" >
-      <span class="">+5</span> 
-      
-      
-      </div>
-      <div class="flex items-center gap-2  lg:text-2xl  hover:scale-110 hover:brightness-105 duration-400 transition-all  "><img src="emojis/timeslow.png" class="rounded-3xl lg:w-25 lg:h-25 ml-1.5 w-15 h-15 " >
-      <span class="">+5 secs</span> 
-      
-      
-      </div>
-    
-    </div>
-    </div>
-     
-      
-      <a href="suggest.html" target="_blank" onclick="buttonsound()" class="hover:text-amber-300">Suggest a Feature / Fix!</a>
-    </nav>
-  </header>
-   
-  <!-- INTRO TEXT SECTION -->
-  <section id="intro-text" class="relative mt-28 sm:mt-40 lg:mt-23 lg:text-center  text-white z-30">
-    <h2 class="lg:text-6xl  text-[45px] font-bold  text-center drop-shadow-lg "style="font-family: 'jersey25';">Welcome to EmoJump</h2>
-    <p class="lg:text-xl text-[18px] lg:max-w-xl  mx-auto text-amber-300 drop-shadow font-bold text-center opacity-90 p-3 pt-8"style="font-family: 'jersey25';" >
-      A retro, 8-bit-inspired arcade game. Catch the target emoji to score points — but beware of the decoys trying to trick you!
-    </p>
-  </section>
+                    <!-- Suggest Feature Link -->
+                    <a href="suggest.html" target="_blank" onclick="buttonsound()" class="hover:text-amber-300">Suggest a Feature / Fix!</a>
+                </nav>
+            </header>
 
-  </div>
+            <!-- ==================== INTRO TEXT SECTION ==================== -->
+            <section id="intro-text" class="relative mt-28 sm:mt-40 lg:mt-23 lg:text-center text-white z-30">
+                <!-- Main Title -->
+                <h2 class="lg:text-6xl text-[45px] font-bold text-center drop-shadow-lg" style="font-family: 'jersey25';">Welcome to EmoJump</h2>
+                
+                <!-- Game Description -->
+                <p class="lg:text-xl text-[18px] lg:max-w-xl mx-auto text-amber-300 drop-shadow font-bold text-center opacity-90 p-3 pt-8" style="font-family: 'jersey25';">
+                    A retro, 8-bit-inspired arcade game. Catch the target emoji to score points — but beware of the decoys trying to trick you!
+                </p>
+            </section>
+        </div>
 
-       <div id="bg" class = "hidden w-full h-full bg-cover bg-center absolute inset-0 z-0"  style="background-image: url(img/bg.gif);" ></div>
-        <div id="bgintro" class = " w-full h-full bg-cover bg-center absolute inset-0 z-0"  style="background-image: url(img/bgintro.jpg);" ></div>
-        <div id="scorebg" class = " w-full h-full bg-cover bg-center hidden absolute inset-0 z-0"  style="background-image: url(img/score.gif);" ></div>
-        <!-- <div id="bg" class = "hidden w-full h-full"  style="background-image: url(img/bg.gif);" ></div> -->
+        <!-- ==================== BACKGROUND ELEMENTS ==================== -->
+        <!-- Game Background (Hidden by default) -->
+        <div id="bg" class="hidden w-full h-full bg-cover bg-center absolute inset-0 z-0" style="background-image: url(img/bg.gif);"></div>
+        
+        <!-- Intro Background (Visible by default) -->
+        <div id="bgintro" class="w-full h-full bg-cover bg-center absolute inset-0 z-0" style="background-image: url(img/bgintro.jpg);"></div>
+        
+        <!-- Score Background (Hidden by default) -->
+        <div id="scorebg" class="w-full h-full bg-cover bg-center hidden absolute inset-0 z-0" style="background-image: url(img/score.gif);"></div>
 
-
-
-
-
-       <!-- <video id="bg" class="absolute top-0 left-0 w-full h-full object-cover hidden" autoplay muted loop>
-    <source src="img/b.mp4" type="video/mp4">
-    
-     </video> -->
-
+        <!-- Dark Overlay for Better Text Visibility -->
         <div id="dark-overlay" class="absolute inset-0 bg-black opacity-20 z-10 pointer-events-none w-full h-full"></div>
 
-          
-          
-         <div id="timer" class=" lg:w-40 lg:h-20 w-32 h-16 absolute top-[1%] right-[1%] rounded-3xl bg-amber-300 hidden flex items-center justify-center lg:text-5xl text-4xl font-bold z-20">60</div>
-        <div id="startbutton" class="lg:w-50  lg:h-27  w-35 h-24 absolute lg:top-1/2 top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center justify-center bg-emerald-500 p-8 rounded-4xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl z-30 cursor-pointer gap-2" onclick="startgame()">
+        <!-- ==================== GAME UI ELEMENTS ==================== -->
+        <!-- Game Timer (Hidden by default) -->
+        <div id="timer" class="lg:w-40 lg:h-20 w-32 h-16 absolute top-[1%] right-[1%] rounded-3xl bg-amber-300 hidden flex items-center justify-center lg:text-5xl text-4xl font-bold z-20">60</div>
+        
+        <!-- Start Game Button -->
+        <div id="startbutton" class="lg:w-50 lg:h-27 w-35 h-24 absolute lg:top-1/2 top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center justify-center bg-emerald-500 p-8 rounded-4xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold text-3xl z-30 cursor-pointer gap-2" onclick="startgame()">
+            <!-- Target Emoji Icon -->
+            <img src="emojis/target.png" alt="target emoji" class="lg:w-12 lg:h-12 w-10 h-10 object-contain" style="image-rendering: pixelated;">
+        </div>
+        
+        <!-- High Score Display -->
+        <div class="lg:text-amber-300 text-amber-50 text-xl lg:mt-12 top-[62%] left-1/2 -translate-x-1/2 -translate-y-1/2 absolute animate-pulse font-bold mt-4 z-20" id="highscore" style="font-family: 'jersey25';">Highest Score : 0</div>
+        
+        <!-- Countdown Display (Hidden by default) -->
+        <div id="count" class="w-20 h-20 text-7xl text-amber-300 font-bold rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center hidden z-20">
+            0
+        </div>
 
+        <!-- ==================== GAME END SCREEN ==================== -->
+        <div class="grid grid-cols-1 hidden opacity-0 scale-90 transition-all duration-2000 ease-in-out z-30" id="endgrid">
+            <!-- Final Score Title -->
+            <div class="text-red-500 font-bold lg:text-7xl text-6xl flex items-center justify-center pt-50" style="font-family: 'jersey25';">Your score</div>
 
-          <img src="emojis/target.png" alt="target emoji" class="lg:w-12 lg:h-12 w-10 h-10  object-contain" style="image-rendering: pixelated;">
-          
-     </div>
-     <div class="lg:text-amber-300 text-amber-50 text-xl lg:mt-12 top-[62%] left-1/2  -translate-x-1/2 -translate-y-1/2  absolute animate-pulse font-bold mt-4 z-20 " id="highscore" style="font-family: 'jersey25';">Highest Score : 0 </div>
-    <div id="count" class="w-20 h-20 text-7xl  text-amber-300 font-bold rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center hidden z-20  ">
-    0
-    </div>
-   
-   
-    <div class=" grid grid-cols-1 hidden opacity-0 scale-90 transition-all duration-2000 ease-in-out  z-30 " id="endgrid">
-    
-    <div class="text-red-500 font-bold lg:text-7xl text-6xl flex items-center justify-center pt-50" style="font-family: 'jersey25';">Your score</div>
-   
-    <div class="flex items-center justify-center pt-50 gap-x-8">
-     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-2xl lg:w-40  w-30   h-15 flex justify-center items-center cursor-pointer" onclick="exit()" id="ex"   >Exit</div>
-     <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-xl lg:w-40 w-30 h-15 flex justify-center items-center cursor-pointer " onclick="tryagain()" id="try">Try again</div>
-    </div>
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-center pt-50 gap-x-8">
+                <!-- Exit Button -->
+                <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-2xl lg:w-40 w-30 h-15 flex justify-center items-center cursor-pointer" onclick="exit()" id="ex">Exit</div>
+                
+                <!-- Try Again Button -->
+                <div class="bg-emerald-500 rounded-2xl hover:scale-110 hover:brightness-105 duration-400 transition-all font-bold lg:text-3xl text-xl lg:w-40 w-30 h-15 flex justify-center items-center cursor-pointer" onclick="tryagain()" id="try">Try again</div>
+            </div>
+        </div>
 
-    </div>
-    <button class="cursor-pointer" onclick="exitbutton()">
-    <div id="exitbutton" class="bg-red-500 hover:scale-110 hover:brightness-105 duration-300 text-white h-16 w-30 lg:w-35 lg:h-20 absolute rounded-3xl z-20 left-[1%] top-[1%] text-2xl flex items-center justify-center font-bold hidden">Exit</div></button>
+        <!-- ==================== IN-GAME EXIT BUTTON ==================== -->
+        <button class="cursor-pointer" onclick="exitbutton()">
+            <div id="exitbutton" class="bg-red-500 hover:scale-110 hover:brightness-105 duration-300 text-white h-16 w-30 lg:w-35 lg:h-20 absolute rounded-3xl z-20 left-[1%] top-[1%] text-2xl flex items-center justify-center font-bold hidden">Exit</div>
+        </button>
     </div>
 
-    
- <script src="Emo.js" defer></script>   
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <!-- Main Game Script -->
+    <script src="Emo.js" defer></script>
 </body>
 </html>
